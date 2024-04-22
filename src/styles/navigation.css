@@ -1,0 +1,78 @@
+.menu-container {
+    --closed-width: 72px;
+    --opened-width: 210px;
+    --expanded-width: 150px;
+    --spacing-width: calc(var(--expanded-width) - var(--closed-width));
+}
+
+.backblur {
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+}
+
+
+
+.prompt-banner {
+    --bg:
+        radial-gradient(circle at 10% 15%, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0) 35%),
+        radial-gradient(circle at 30% 60%, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0) 35%),
+        radial-gradient(circle at 5% 50%, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0) 40%);
+    mask-image: var(--bg);
+    -webkit-mask-image: var(--bg);
+}
+
+.transition-no {
+    transition: none;
+}
+
+.bg {
+    --opacity: var(--background-opacity);
+    --rotate: 80deg;
+    --saturate: 1;
+    --contrast: 1;
+    filter: saturate(var(--saturate)) contrast(var(--contrast)) hue-rotate(var(--rotate));
+    opacity: var(--opacity);
+}
+
+
+#side-menu {
+    box-sizing: border-box;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+}
+
+#side-menu.open::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    border-right: 1px solid hsl(var(--border));
+    backdrop-filter: blur(10px) brightness(0.95);
+}
+
+#top-menu {
+    box-sizing: border-box;
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
+}
+
+#top-menu.floating {
+    background-color: hsl(var(--background));
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+#top-menu.floating .option {
+    border-color: hsl(var(--border));
+}
+
+#side-menu.floating {
+    border-right: 1px solid hsl(var(--border));
+}
+
+#side-menu.floating::before {
+    display: none !important;
+}
