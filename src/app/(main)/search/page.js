@@ -1,15 +1,15 @@
 'use client'
 import usePageLoader from "@/lib/page-loader";
 import { search } from "@/lib/record";
-import { ProductDisplay } from "../../../client/product-display";
+import { ProductDisplay } from "@/client/product-display";
 import React from "react";
 import nProgress from "nprogress";
 import { useSearchParams } from "next/navigation";
-import { TypeMenu } from "../../../client/type-menu";
+import { TypeMenu } from "@/client/type-menu";
 
-export default function Haha() {
-    usePageLoader()
 
+
+function SearchHelper() {
     const [products, setProducts] = React.useState([])
     const searchParam = useSearchParams()
 
@@ -51,14 +51,24 @@ export default function Haha() {
     }, [searchParam])
 
     return (
+        <div className="flex flex-wrap gap-5 mt-20 mb-auto [--block-scale:1]">
+            {products.map((product, index) => (
+                <ProductDisplay className='flex-shrink-0 flex-grow-0 w-[120px] h-[240px]' size={120} key={index} media={product} loading={false} />
+            ))}
+
+        </div>
+    )
+}
+
+export default function Haha() {
+    usePageLoader()
+
+    return (
         <>
             <TypeMenu />
-            <div className="flex flex-wrap gap-5 mt-20 mb-auto [--block-scale:1]">
-                {products.map((product, index) => (
-                    <ProductDisplay className='flex-shrink-0 flex-grow-0 w-[120px] h-[240px]' size={120} key={index} media={product} loading={false} />
-                ))}
-
-            </div>
+            <React.Suspense>
+                <SearchHelper />
+            </React.Suspense>
         </>
     )
 }

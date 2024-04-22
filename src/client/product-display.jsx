@@ -88,7 +88,7 @@ export function ProductDisplay({ className, media: item, size, loading = true })
             <div className="flex flex-col space-y-1 sm:space-y-3 font-medium text-[8px] sm:text-xs">
               <div className="flex gap-3">
                 <p>From</p>
-                <p className="font-bold">{item.origin.name}</p>
+                <p className="font-bold">{item.origin?.name}</p>
               </div>
               <Separator className='w-full' />
               <div>

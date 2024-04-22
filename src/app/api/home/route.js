@@ -12,6 +12,8 @@ function shuffle(array) {
     }
     return array;
 }
+export const dynamic = 'force-dynamic'
+
 
 export async function GET(req) {
 

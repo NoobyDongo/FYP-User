@@ -1,18 +1,13 @@
 'use client'
-import { cn } from "@/lib/utils";
 import React from "react";
 import usePageLoader from "@/lib/page-loader";
-import NextImage from "@/components/next-image";
-import { CartProvider } from "@/client/cart-context";
-import { Button } from "@/components/ui/button";
-import { create, search } from "@/lib/record";
+import { search } from "@/lib/record";
 import { toast } from "sonner";
 import sleep from "@/lib/sleep";
 import { CircularProgress } from "@mui/material";
 import { ProductImage } from "@/client/product-image";
 import useCustomRouter from "@/lib/custom-router";
-import { CheckCircledIcon, ClockIcon } from "@radix-ui/react-icons";
-import { Separator } from "@/components/ui/separator";
+import { CheckCircledIcon } from "@radix-ui/react-icons";
 
 export default function HAha() {
     usePageLoader()

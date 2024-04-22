@@ -1,28 +1,16 @@
 'use client'
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { Button } from "@/components/ui/button";
 import React, { useCallback } from "react";
 import '@/styles/navigation.css';
 import { Input } from '@/components/ui/input';
 
 import { cn } from "@/lib/utils"
-import { BackpackIcon, GearIcon, MagnifyingGlassIcon, PlusIcon, TrashIcon } from "@radix-ui/react-icons"
+import { BackpackIcon, GearIcon, MagnifyingGlassIcon, TrashIcon } from "@radix-ui/react-icons"
 
-import AssistantIcon from '@mui/icons-material/Assistant';;
-import AssistantOutlinedIcon from '@mui/icons-material/AssistantOutlined';
-import AssistantPhotoIcon from '@mui/icons-material/AssistantPhoto';
-import AssistantPhotoOutlinedIcon from '@mui/icons-material/AssistantPhotoOutlined';
-import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
-import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
-import { Separator } from './ui/separator';
-import { DrawerDemo } from './drawer-demo';
 import { ModeToggle } from './mode-toggle';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import { Fade } from '@mui/material';
 import { ScrollArea, ScrollBar } from './ui/scroll-area';
 import { Header } from './header';
-import { CartProvider, updateCartEvent, useCart } from '@/client/cart-context';
+import { updateCartEvent, useCart } from '@/client/cart-context';
 import useCustomRouter from '@/lib/custom-router';
 import nProgress from "nprogress";
 

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import sendEmail from "@/lib/send-email";
-import sleep from "@/lib/sleep";
 
 export function useEmailSender({ start, end, reset, checker, purpose = "" }) {
     const [sent, setSent] = React.useState(false);

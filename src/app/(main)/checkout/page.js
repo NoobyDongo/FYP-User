@@ -14,7 +14,6 @@ import { useCart } from "@/client/cart-context";
 import sleep from "@/lib/sleep";
 import { toast } from "sonner";
 import { create, search } from "@/lib/record";
-import { ReloadIcon } from "@radix-ui/react-icons";
 import { CircularProgress } from "@mui/material";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 

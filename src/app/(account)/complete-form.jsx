@@ -19,14 +19,14 @@ import sleep from "@/lib/sleep";
 import { usePasswordForm } from "./password-form";
 import { create } from "@/lib/record";
 import { useExistingEmailChecker } from "./existing-email-checker";
-import signin from "../../lib/signin";
+import signin from "@/lib/signin";
 
 function PasswordForm(stage, callback) {
     const submit = React.useRef();
     const [form, onSubmit] = usePasswordForm(callback);
 
     return [(<Form {...form} key={1}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" autoComplete="off">
             <FormField
                 control={form.control}
                 name="password"

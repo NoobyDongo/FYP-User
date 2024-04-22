@@ -71,31 +71,3 @@ export function useStageTwoForm(callback: (values: z.infer<typeof formSchema2>) 
 
   return [form, onSubmit]
 }
-
-const formSchema3 = z.object({
-  password: z.string()
-    .min(8, "Password must be at least 8 characters long.")
-    .max(30, "Password must be less than 30 characters long.")
-    .refine(password => /[A-Z]/.test(password), "Password must contain at least one capital letter.")
-    .refine(password => /\d/.test(password), "Password must contain at least one number."),
-  confirm: z.string(),
-}).refine((data) => data.confirm === data.password, {
-  message: "Passwords must match.",
-  path: ["confirm"],
-});
-
-export function useStageThreeForm(callback: (values: z.infer<typeof formSchema3>) => void) {
-  const form = useForm<z.infer<typeof formSchema3>>({
-    resolver: zodResolver(formSchema3),
-    defaultValues: {
-      password: "",
-      confirm: "",
-    },
-  })
-
-  async function onSubmit(values: z.infer<typeof formSchema3>) {
-    callback?.(values)
-  }
-
-  return [form, onSubmit]
-}

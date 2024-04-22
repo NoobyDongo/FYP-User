@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { searchForFilters } from "@/lib/record";
 import sleep from "@/lib/sleep";
-import { Separator } from "@/components/ui/separator";
 import Loader from "@/components/loader";
 import { Button } from "@/components/ui/button";
 import useCustomRouter from "../lib/custom-router";
@@ -65,25 +64,40 @@ export function TypeMenu({ className }) {
 
   );
 }
-function TypeButton({ className, type, loading }) {
+
+function ServerSideButton({ className, type, ...props }) {
   const router = useCustomRouter();
   const searchParam = useSearchParams()
   const active = searchParam.get('type') === type || (searchParam.get('type') === null && type === "All");
 
   return (
+    <Button onClick={() => {
+      if (type === "All")
+        router.push(`/search?`,);
+      else
+        router.push(`/search?type=${type}`,);
+    }} variant="ghost" className={cn(
+      "flex items-center text-xs px-3 py-2 h-6 rounded-full text-nowrap",
+      active ? 'bg-foreground text-background' : 'bg-background text-foreground',
+      className
+    )} {...props}>
+      {type}
+    </Button>
+  )
+}
+
+function TypeButton({ className, type, loading }) {
+  return (
     <Loader className="rounded-full" loading={loading}>
-      <Button onClick={() => {
-        if (type === "All")
-          router.push(`/search?`,);
-        else
-          router.push(`/search?type=${type}`,);
-      }} variant="ghost" className={cn(
-        "flex items-center text-xs px-3 py-2 h-6 rounded-full text-nowrap",
-        active ? 'bg-foreground text-background' : 'bg-background text-foreground',
-        className
-      )}>
-        {type}
-      </Button>
+      <React.Suspense fallback={
+        <Button variant="ghost" className={cn(
+          "flex items-center text-xs px-3 py-2 h-6 rounded-full text-nowrap bg-background text-foreground",
+          className
+        )}>
+          {type}
+        </Button>}>
+        <ServerSideButton type={type} className={className}/>
+      </React.Suspense>
     </Loader>
   );
 }

@@ -1,36 +1,11 @@
 'use client'
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import React from "react";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu"
-import { HamburgerMenuIcon } from "@radix-ui/react-icons"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
 import usePageLoader from "@/lib/page-loader";
 import { CustomCarousel } from "../../client/custom-carousel";
 import NextImage from "@/components/next-image";
-import { CartProvider } from "@/client/cart-context";
 import { ProductDisplay } from "@/client/product-display";
 import { TypeMenu } from "@/client/type-menu";
-import { Button } from "@/components/ui/button";
-import { create, search } from "@/lib/record";
-import { toast } from "sonner";
-import sleep from "@/lib/sleep";
-
 
 const titles = ["", "", ""]
 
@@ -54,7 +29,6 @@ export default function Home() {
     const fetchData = async () => {
       const response = await fetch('http://localhost/api/home');
       const data = await response.json();
-      console.log(data);
       setSections(data)
     }
     fetchData()
@@ -94,8 +68,6 @@ export default function Home() {
         current = 1.3
       }
 
-      console.log(items)
-
       if (current != scale.current) {
         scale.current = current
         container.current.style.setProperty('--block-scale', current)
@@ -118,8 +90,6 @@ export default function Home() {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
-
-  console.log(sections)
 
   const loading = !Boolean(sections)
 

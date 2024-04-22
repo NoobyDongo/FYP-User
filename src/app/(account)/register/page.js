@@ -1,5 +1,5 @@
 "use client"
-import { useStageOneForm, useStageOneFormN, useStageTwoForm, useStageThreeForm } from "./form"
+import { useStageOneForm, useStageOneFormN, useStageTwoForm } from "./form"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -12,14 +12,13 @@ import {
 import { Input } from "@/components/ui/input"
 import React from "react"
 import { AccountForm } from "@/components/account-form"
-import { EnvelopeClosedIcon, AlignRightIcon, AlignLeftIcon } from '@radix-ui/react-icons'
+import { EnvelopeClosedIcon, AlignRightIcon, AlignLeftIcon, PersonIcon } from '@radix-ui/react-icons'
 import usePageLoader from "@/lib/page-loader"
 import TimerButton from "@/components/timer-button"
 import NProgress from 'nprogress';
 import { useEmailSender } from "../email-sender"
 
 import { cn } from "@/lib/utils"
-import { PersonIcon } from '@radix-ui/react-icons';
 
 import {
     Tooltip,
@@ -35,7 +34,7 @@ import {
 } from "@/components/ui/dialog"
 import NextImage from "@/components/next-image"
 import { DialogClose } from "@radix-ui/react-dialog"
-import { useEncryption, useDecryption } from "@/lib/encrypt"
+import { useEncryption } from "@/lib/encrypt"
 import SigninButton from "@/components/signin-button"
 import { useExistingEmailChecker } from "../existing-email-checker"
 
@@ -371,7 +370,7 @@ export default function Haha() {
             content=
             {content}
             footer={<>
-                {true && <>
+                {false && <>
                     <Button onClick={
                         async () => {
                             const url = `http://localhost:8080/customer/all`
